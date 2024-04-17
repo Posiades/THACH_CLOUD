@@ -1,5 +1,5 @@
 @extends('layout/layout')
-@section('title', 'Liên Hệ')
+@section('title', 'LIÊN HỆ')
 @section('bodyclass', 'main-layout inner_page')
 @section('content')
 <div class="contact">

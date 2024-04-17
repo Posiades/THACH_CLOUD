@@ -9,7 +9,7 @@
 @endif
     <h1>User Management</h1> <br>
 
-    <form method="POST" action="{{route('admin.searchuser')}}">
+    <form method="POST" action="{{route('searchuser')}}">
         @csrf
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Search users" name="searchquery">
@@ -34,7 +34,7 @@
                 <td><?php echo $client['email']; ?></td>
                 <td><?php echo $client['password']; ?></td>
                 <td>
-                    <a href="{{route('admin.edituser', ['email'=>$client['email']])}}" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal"><i class="fas fa-edit"></i></a>
+                    <a href="{{route('edituser', ['id'=>$client['id']])}}" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal"><i class="fas fa-edit"></i></a>
                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteUserModal"><i class="fas fa-trash"></i></button>
                 </td>
             </tr>

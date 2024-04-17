@@ -22,8 +22,7 @@ Route::get('/about', [homeController::class, 'about'])->name('about');
 Route::get('/hosting', [homeController::class, 'hosting'])->name('hosting');
 Route::get('/vps', [homeController::class, 'vps'])->name('vps');
 Route::get('/contract', [homeController::class, 'contract'])->name('contract');
-Route::get('/hosting/{slug}', [homeController::class, 'detail'])->name('detailhosting');
-Route::get('/vps/{slug}', [homeController::class, 'detailvps'])->name('detailvps');
+Route::get('/{type}/{slug}', [homeController::class, 'detail'])->name('detail');
 
 
 
@@ -59,7 +58,7 @@ Route::prefix('user')->group(function () {
 //============================== Admin Routes Area ============================
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checkadmin'], function () {
-    Route::get('/dashboard', [adminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [adminController::class, 'dashboard'])->name('admin.dashboard');
     Route::post('/logout', [adminController::class, 'logout'])->name('admin.logout');
     
     
@@ -67,9 +66,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkadmin'], function () {
     // User Control
     
     Route::get('/listclient', [adminController::class, 'listclient'])->name('listclient');
-    Route::post('/searchuser', [adminController::class, 'searchuser'])->name('admin.searchuser');
+    Route::get('/edituser/{id}', [adminController::class, 'edituser'])->name('edituser');
+    Route::post('/searchuser', [adminController::class, 'searchuser'])->name('searchuser');
     Route::get('/adduser/{username}', [adminController::class, 'adduser'])->name('adduser');
-    Route::get('/edituser/{email}', [adminController::class, 'edituser'])->name('admin.edituser');
+
 
 
     // Hosting Routes

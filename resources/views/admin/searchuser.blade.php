@@ -10,6 +10,7 @@
         </div>
     </form> <br>
     <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addUserModal"><i class="fas fa-plus"></i> Add User</button>
+ 
     <table class="table">
         <thead>
             <tr>
@@ -20,17 +21,15 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($userrespon as $user): ?>
             <tr>
-                <td><?php echo $user['username']; ?></td>
-                <td><?php echo $user['email']; ?></td>
-                <td><?php echo $user['password']; ?></td>
+                <td>{{$user_respon['username']}}</td>
+                <td>{{$user_respon['email']}}</td>
+                <td>{{$user_respon['password']}}</td>
                 <td>
-                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal"><i class="fas fa-edit"></i></button>
+                   <a href="{{route('edituser', ['id'=>$user_respon['id']])}}" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal"><i class="fas fa-edit"></i></a>
                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteUserModal"><i class="fas fa-trash"></i></button>
                 </td>
             </tr>
-            <?php endforeach; ?>
         </tbody>
     </table>
     <a href="{{route('listclient')}}" class="btn btn-primary">Back</a>

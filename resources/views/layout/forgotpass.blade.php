@@ -1,5 +1,5 @@
 @extends('layout/layout')
-@section('title', 'Change PassWord')
+@section('title', 'THAY ĐỔI MẬT KHẨU')
 @section('bodyclass', 'main-layout inner_page')
 @section('content')
 @if(Session::has('success_sendmail_resetpass'))
@@ -32,7 +32,7 @@
                                 </span>
                             @enderror
                         </div>
-
+                        <br>
                         <div class="form-group captcha">
                             <div class="g-recaptcha" data-sitekey="6LeyCaQpAAAAAHAUNtmzjy7YN4ASUvop3VfUDigK"></div>
                         </div>

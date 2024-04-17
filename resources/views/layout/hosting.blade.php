@@ -35,7 +35,7 @@
                         </ul>
                      </div>
                      <form action="" method="post">
-                     <a class="read_more" href="{{route('detailhosting',[$hosting->slug])}}">Đăng Ký</a>
+                     <a class="read_more" href="{{route('detail',['type'=>$hosting->type_product , 'slug'=>$hosting->slug])}}">Đăng Ký</a>
                      </form>
                   </div>
                </div>

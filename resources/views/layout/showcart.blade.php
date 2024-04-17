@@ -1,11 +1,10 @@
 @extends('layout/layout')
-@section('title', 'Giỏ hàng')
+@section('title', 'GIỎ HÀNG')
 @section('bodyclass', 'main-layout inner_page')
 @section('content')
-
     @if(session()->has('cart'))
     <div class="container mt-5">
-        <h2>Sevice Cart</h2>
+        <h2>DỊCH VỤ ĐÃ CHỌN</h2>
         <table class="table">
             <thead>
                 <tr>

@@ -206,17 +206,15 @@ class adminController extends Controller
         return view('admin/listclient', compact('client'));
     }
     
-    function edituser($email){
-        $user = user::where('is_admin', '0')->findOrFail($email);
-        return view('admin.edituser', compact('user'));
+    function edituser($id){
+        $user = user::findOrFail($id);
+        return view('admin/edit_user', compact('user'));
     }
 
     function searchuser(Request $req){
         $user_search = $req -> searchquery;
-        $find_username = user::where('is_admin', '0')->findOrFail($user_search);
-        $find_email = user::where('is_admin', '0')->findOrFail($user_search);
-        dd($find_email);
-        dd($find_username);
+        $find_username = user::where('is_admin', '0')->where('username', "$user_search")->first();
+        $find_email = user::where('is_admin', '0')->where('email', "$user_search")->first();
         if(isset($find_email) || isset($find_username)){
             if(isset($find_email)){
                 $user_respon = $find_email;
@@ -228,7 +226,6 @@ class adminController extends Controller
         }else{
             dd('Giá trị trống hoặc không hợp lệ');
         }
-        dd($user_respon);
         return view('admin.searchuser', compact('user_respon'));
     }
 

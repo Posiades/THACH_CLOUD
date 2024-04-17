@@ -35,7 +35,7 @@
                    </ul>
                 </div>
                 <form action="" method="post">
-                <a class="read_more" href="{{route('detailvps', [$vps->slug])}}">Đăng Ký</a>
+                <a class="read_more" href="{{route('detail', ['type'=>$vps->type_product, 'slug'=>$vps->slug])}}">Đăng Ký</a>
                 </form>
              </div>
           </div>

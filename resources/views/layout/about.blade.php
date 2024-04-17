@@ -1,5 +1,5 @@
 @extends('layout/layout')
-@section('title', 'Về Chúng Tôi')
+@section('title', 'VỀ CHÚNG TÔI')
 @section('bodyclass', 'main-layout inner_page')
 @section('content')
 <div class="about">

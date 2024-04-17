@@ -43,33 +43,30 @@
                               <a class="nav-link" href="{{route('login')}}">Đăng Nhập</a>
                            </li>
                            @endif
+                           @if(Auth::check())
+                           <div class="dropdown">
+                                 <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Hello <strong>{{Auth::user()->username}}</strong>
+                                </button>
+                                 @if(Auth::user()->is_admin == 1)
+                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                   {{-- {{-- <a class="dropdown-item" href="#">Item 1</a> --}}
+                                   <a class="dropdown-item" href="{{route('admin.dashboard')}}">DashBoard</a>
+                                   <a class="dropdown-item" href="{{route('user.logout')}}">Đăng Xuất</a>
+                               </div>
+                               @else
+                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                 {{-- <a class="dropdown-item" href="#">Item 1</a> --}}
+                                 <a class="dropdown-item" href="{{route('user.dashboard')}}">User DashBoard</a>
+                                 <a class="dropdown-item" href="{{route('user.logout')}}">Đăng Xuất</a>
+                              </div>
+                             @endif
+                           </div>
+                           @endif
                         </ul>
                      </div>
                   </nav>
                </div>
-                  @if(Auth::check())
-                  <div class="dropdown">
-                      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Hello <strong>{{Auth::user()->username}}</strong>
-                      </button>
-                        @if(Auth::user()->is_admin == 1)
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          {{-- {{-- <a class="dropdown-item" href="#">Item 1</a> --}}
-                          <a class="dropdown-item" href="{{route('dashboard')}}">DashBoard</a>
-                          <a class="dropdown-item" href="{{route('admin.logout')}}">Đăng Xuất</a>
-                      </div>
-                      @else
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        {{-- <a class="dropdown-item" href="#">Item 1</a> --}}
-                        <a class="dropdown-item" href="{{route('user.dashboard')}}">User DashBoard</a>
-                        <a class="dropdown-item" href="{{route('user.logout')}}">Đăng Xuất</a>
-                     </div>
-                    @endif
-                  </div>
-                  @endif
-            
-            
-            
             </div>
          </div>
       </div>

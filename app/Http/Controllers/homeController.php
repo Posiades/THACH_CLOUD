@@ -28,18 +28,18 @@ class homeController extends Controller
     }
 
     function contract(){
-
         return view('layout/contract');
     }
     
-    function detail($slug){
-        $hostings = hosting::where('slug', $slug)->firstOrFail();
-        return view('layout/detail', compact('hostings'));
-    }
-    
-    function detailvps($slug){
-        $vps = vps::where('slug', $slug)->firstOrFail();
-        return view('layout.detailvps', compact('vps'));
+    function detail($type,$slug){
+        if($type == "hosting"){
+            $product = hosting::where('slug', $slug)->first();
+        }else if($type == "vps"){
+            $product = vps::where('slug', $slug)->first();
+        }else{
+        }
+        return view('layout/detail', compact('product'));
     }
 
+    
 }

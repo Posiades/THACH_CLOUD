@@ -1,99 +1,16 @@
 @extends('layout/layout')
-@section('title', 'Trang Chủ')
+@section('title', 'TRANG CHỦ')
 @section('bodyclass', 'main-layout')
 @section('content')
 <div class="full_bg">
-         <div class="slider_main">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-12">
-                     <!-- carousel code -->
-                     <div id="banner1" class="carousel slide">
-                        <ol class="carousel-indicators">
-                           <li data-target="#banner1" data-slide-to="0" class="active"></li>
-                           <li data-target="#banner1" data-slide-to="1"></li>
-                           <li data-target="#banner1" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                           <!-- first slide -->
-                           <div class="carousel-item active">
-                              <div class="carousel-caption relative">
-                                 <div class="row">
-                                    <div class="col-md-6">
-                                       <div class="dream">
-                                          <h1>
-                                          CHINH PHỤC MỌI THÁCH THỨC <br> LƯU TRỮ MẠNH MẼ <br>XÂY DỰNG TRANG WEB MƠ ƯỚC <br>CÙNG THACH CLOUD
-                                          </h1>
-                                          <a class="read_more" href="{{url('hosting')}}">Hosting</a>    
-                                          <a class="read_more" href="{{url('vps')}}">VPS</a>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="dream_img">
-                                          <figure><img src="images/dream_img.png" alt="#"/></figure>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- second slide -->
-                           <div class="carousel-item">
-                              <div class="carousel-caption relative">
-                                 <div class="row">
-                                    <div class="col-md-6">
-                                       <div class="dream">
-                                          <h1>
-                                            MẠNH MẼ <br> TỐC ĐỘ CAO <br> BẢO MẬT TỐT <br>TỐI ƯU TRÃI NGHIỆM
-                                          </h1>
-                                          <a class="read_more" href="{{url('hosting')}}">Hosting</a>    
-                                          <a class="read_more" href="{{url('vps')}}">VPS</a>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="dream_img">
-                                          <figure><img src="images/dream_img.png" alt="#"/></figure>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- third slide-->
-                           <div class="carousel-item">
-                              <div class="carousel-caption relative">
-                                 <div class="row">
-                                    <div class="col-md-6">
-                                       <div class="dream">
-                                          <h1>
-                                             GIÁ CẢ TỐT NHẤT <br>SERVER HIỆN ĐẠI <br>HỖ TRỢ NHIỆT TÌNH <br>ĐĂNG KÍ NGAY
-                                          </h1>
-                                          <a class="read_more" href="{{url('hosting')}}">Hosting</a>    
-                                          <a class="read_more" href="{{url('vps')}}">VPS</a>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="dream_img">
-                                          <figure><img src="images/dream_img.png" alt="#"/></figure>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- controls -->
-                        <a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
-                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                        <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#banner1" role="button" data-slide="next">
-                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        <span class="sr-only">Next</span>
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
+   <div class="slider_main">
+     <div class="container">
+       
+      
+
+     </div>
+   </div>
+ </div>
       <!-- end banner -->
       <!-- guarantee -->
       <div class="guarantee">
@@ -258,7 +175,7 @@
                            </ul>
                         </div>
                         <form action="" method="post">
-                        <a class="read_more" href="{{route('detailhosting',[$hosting->slug])}}">Đăng Ký</a>
+                        <a class="read_more" href="{{route('detail',['type'=>$hosting->type_product, 'slug'=>$hosting->slug])}}">Đăng Ký</a>
                         </form>
                      </div>
                   </div>

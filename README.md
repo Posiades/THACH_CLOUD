@@ -38,7 +38,7 @@ To get started with Thach Cloud, follow these steps:
 
 ## Demo My Project Website
 
-You can access my website through the link [THACH CLOUD](nguyenngocthach.id.vn)
+You can access my website through the link [THACH CLOUD](www.nguyenngocthach.id.vn)
 
 ## Contributing
 
