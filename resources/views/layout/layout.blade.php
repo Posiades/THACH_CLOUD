@@ -16,6 +16,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
       <link rel="stylesheet" href="{{asset('fonts/material-icon/css/material-design-iconic-font.min.css')}}">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-design-iconic-font@latest/dist/css/material-design-iconic-font.min.css">
       <link rel="stylesheet" href="{{ asset('css/custominterface.css') }}">
       <link rel="stylesheet" href="{{asset('css/formstyle')}}">
 

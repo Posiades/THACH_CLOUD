@@ -1,5 +1,5 @@
 <div class="header">
-         <div class="container-fluid">
+         <div class="container">
             <div class="row d_flex">
                <div class=" col-md-2 col-sm-3 col logo_section">
                   <div class="full">
