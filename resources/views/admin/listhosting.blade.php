@@ -55,8 +55,8 @@
                 <td>{{ $hosting->bandwith }}</td>
                 <td>{{ $hosting->slug }}</td>
                 <td>
-                    <a href="{{ route('admin.edithosting', ['id'=>$hosting->ID]) }}" class="btn btn-info btn-sm m-2"><i class="fas fa-edit"></i> Edit</a>
-                    <a href="{{ route('admin.confirm', ['id'=>$hosting->ID]) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
+                    <a href="{{ route('admin.editservice', ['type'=>$hosting->type_product,'id'=>$hosting->ID]) }}" class="btn btn-info btn-sm m-2"><i class="fas fa-edit"></i> Edit</a>
+                    <a href="{{ route('admin.confirm', ['type'=>$hosting->type_product,'id'=>$hosting->ID]) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
                 </td>
             </tr>
             @endforeach

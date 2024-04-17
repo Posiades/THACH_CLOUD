@@ -37,6 +37,7 @@ class homeController extends Controller
         }else if($type == "vps"){
             $product = vps::where('slug', $slug)->first();
         }else{
+            {{echo "<h1> Lỗi Không Nhận Diện Được Loại Dịch Vụ </h1>";}}
         }
         return view('layout/detail', compact('product'));
     }

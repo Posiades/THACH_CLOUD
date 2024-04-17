@@ -22,7 +22,7 @@ Route::get('/about', [homeController::class, 'about'])->name('about');
 Route::get('/hosting', [homeController::class, 'hosting'])->name('hosting');
 Route::get('/vps', [homeController::class, 'vps'])->name('vps');
 Route::get('/contract', [homeController::class, 'contract'])->name('contract');
-Route::get('/{type}/{slug}', [homeController::class, 'detail'])->name('detail');
+Route::get('/detail/{type}/{slug}', [homeController::class, 'detail'])->name('detail');
 
 
 
@@ -58,7 +58,7 @@ Route::prefix('user')->group(function () {
 //============================== Admin Routes Area ============================
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checkadmin'], function () {
-    Route::get('/dashboard', [adminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/dashboard', [adminController::class, 'dashboard'])->name('dashboard');
     Route::post('/logout', [adminController::class, 'logout'])->name('admin.logout');
     
     
@@ -71,22 +71,22 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkadmin'], function () {
     Route::get('/adduser/{username}', [adminController::class, 'adduser'])->name('adduser');
 
 
-
+    Route::get('/edit_service/{type}/{id}', [adminController::class, 'edit_service'])->name('admin.editservice');
+    Route::get('/confirm/{type}/{id}', [adminController::class, 'confirm'])->name('admin.confirm');
+    
     // Hosting Routes
     Route::get('/listhosting', [adminController::class, 'listhosting'])->name('admin.listhosting');
     Route::get('/addhosting', [adminController::class, 'addhosting'])->name('admin.addhosting');
-    Route::post('/post_addhosting', [adminController::class, 'post_addhosting'])->name('admin.post_addhosting');
-    Route::get('/edithosting/{id}', [adminController::class, 'edithosting'])->name('admin.edithosting');
     Route::post('/post_edithosting/{id}', [adminController::class, 'post_edithosting'])->name('admin.post_edithosting');
+    Route::post('/post_addhosting', [adminController::class, 'post_addhosting'])->name('admin.post_addhosting');
     Route::delete('/delete_hosting/{id}', [adminController::class, 'delete_hosting'])->name('admin.delete_hosting');
-    Route::get('/confirm/{name}', [adminController::class, 'confirm'])->name('admin.confirm');
+    
 
     // VPS Routes
     Route::get('/listvps', [adminController::class, 'listvps'])->name('admin.listvps');
-    Route::get('/edit_vps/{id}', [adminController::class, 'edit_vps'])->name('admin.editvps');
     Route::post('/post_editvps/{id}', [adminController::class, 'post_editvps'])->name('admin.post_editvps');
     Route::get('/addvps', [adminController::class, 'addvps'])->name('admin.addvps');
     Route::post('/post_addvps', [adminController::class, 'post_addvps'])->name('admin.post_addvps');
-    Route::get('/confirm_vps/{id}', [adminController::class, 'confirm_vps'])->name('admin.confirm_vps');
+    // Route::get('/confirm_vps/{id}', [adminController::class, 'confirm_vps'])->name('admin.confirm_vps');
     Route::delete('/delete_vps/{id}', [adminController::class, 'delete_vps'])->name('admin.delete_vps');
 });

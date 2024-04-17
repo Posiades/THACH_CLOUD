@@ -46,15 +46,15 @@
             @foreach($vps as $vps)
             <tr class="{{ $loop->iteration % 2 == 0 ? 'table-secondary' : '' }}">
                 <td>{{ $vps->ID }}</td>
-                <td>{{ $vps->name_Vps }}</td>
+                <td>{{ $vps->name }}</td>
                 <td>{{ $vps->mo_ta }}</td>
                 <td>{{ $vps->GiaTien }}</td>
                 <td>{{ $vps->Storage }}</td>
                 <td>{{ $vps->bandwidth }}</td>
                 <td>{{ $vps->slug }}</td>
                 <td>
-                    <a href="{{ route('admin.editvps', ['id'=>$vps->ID]) }}" class="btn btn-info btn-sm m-2"><i class="fas fa-edit"></i> Edit</a>
-                    <a href="{{ route('admin.confirm_vps', ['id'=>$vps->ID]) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
+                    <a href="{{ route('admin.editservice', ['type'=>$vps->type_product, 'id'=>$vps->ID]) }}" class="btn btn-info btn-sm m-2"><i class="fas fa-edit"></i> Edit</a>
+                    <a href="{{ route('admin.confirm', ['type'=>$vps->type_product,'id'=>$vps->ID]) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
                 </td>
             </tr>
             @endforeach

@@ -53,9 +53,16 @@ class adminController extends Controller
     }
     
 
-    function edithosting($id){
-        $hosting = Hosting::findOrFail($id);
-        return view('admin/edithosting', compact('hosting'));
+    function edit_service($type, $id){
+        if($type == "hosting"){
+            $product = hosting::findOrFail($id);
+        } else if($type == "vps"){
+            $product = vps::findOrFail($id);
+        } else{
+            {{ echo "<h1> Lỗi Không Nhận Diện Được Dịch Vụ</h1>"; }}
+        }
+
+        return view('admin/edit_service', compact('product'));
     }
     
     function post_edithosting(Request $req, $id){
@@ -69,8 +76,6 @@ class adminController extends Controller
         $img = $req->img;
         $image = "imgupload/$img";
         $binaryImage = $image;
-
-        dd($binaryImage);
 
 
             DB::table('hosting')
@@ -91,9 +96,16 @@ class adminController extends Controller
         return redirect()->route('admin.listhosting');
     }
 
-    function confirm($id){
-        $idkc = $id;
-        return view('admin/confirm', compact('idkc'));
+    function confirm($type, $id){
+        if($type == "hosting"){
+            $product = hosting::findOrFail($id);
+        }else if($type == "vps"){
+            $product = vps::findOrFail($id);
+        } else{
+            {{echo "<h1> Lỗi Không Nhận Diện Được Loại Dịch Vụ </h1>";}}
+        }
+
+        return view('admin/confirm', compact('product'));
     }
 
     function delete_hosting(Request $req, $id){
@@ -173,7 +185,7 @@ class adminController extends Controller
 
             Session::flash('editvps', "Đã update VPS '$req->namevps' thành công");
 
-        return redirect()->route('listvps');
+        return redirect()->route('admin.listvps');
     }
 
     function delete_vps(Request $req, $id){
