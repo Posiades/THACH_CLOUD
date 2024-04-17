@@ -1,0 +1,27 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.info-column, .options-column, .total-column {
+    padding: 10px;
+}
+
+.info-column {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+.subscription-options h2, .total-price h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.option {
+    margin-bottom: 10px;
+}
+
+.height_hosting{
+    min-height: 1000px;
+}
