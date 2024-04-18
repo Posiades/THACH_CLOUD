@@ -51,7 +51,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">USER CONTROL</h6>
                 <a class="collapse-item" href="{{route('listclient')}}">LIST USER CLIENT</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
+                <a class="collapse-item" href="{{route('changeroleuser')}}">CHANGE ROLE USER</a>
                 <a class="collapse-item" href="utilities-animation.html">Animations</a>
                 <a class="collapse-item" href="utilities-other.html">Other</a>
             </div>

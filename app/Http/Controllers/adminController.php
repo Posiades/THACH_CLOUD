@@ -10,17 +10,18 @@ use App\Models\cart;
 use App\Models\hosting;
 use App\Models\vps;
 use App\Models\User;
+use App\Models\tickets;
 
 class adminController extends Controller
 {
     function dashboard(){
         $hosting = hosting::all();
         $vps = vps::all();
-        $user = user::where('is_admin', '0')->get();
-        return view('admin/index', compact('hosting', 'vps', 'user'));
+        $user = user::where('is_admin', 0)->get();
+        $tickets = tickets::all();
+        return view('admin/index', compact('hosting', 'vps', 'user', 'tickets'));      
     }
-
-
+    
     function listhosting(){
         $hosting = Hosting::all();
         return view('admin/listhosting', compact('hosting'));
@@ -34,21 +35,17 @@ class adminController extends Controller
         }else{
             {{echo "<h1> Lỗi Không Xác Định Được Loại Service </h1>";}}
         }
-
         return view('admin.add_service', compact('product'));
     }
 
     function post_addhosting(Request $req){
-        
         $slug = $req -> namehosting;
         $slug = preg_replace('/[^a-zA-Z0-9\s]/', '', $slug);
         $slug = iconv('UTF-8', 'ASCII//TRANSLIT', $slug);
         $slug = str_replace(' ', '-', $slug);
-        
         $img = $req->img;
         $image = "imgupload/$img";
         $binaryImage = $image;
-
         $hosting = new hosting;
         $hosting->img = $binaryImage;
         $hosting->name = $req->namehosting;
@@ -59,7 +56,6 @@ class adminController extends Controller
         $hosting->bandwidth = $req->bandwidth;
         $hosting->slug = strtolower($slug);
         $hosting->save();
-
         Session::flash('success_add', "Đã tạo mới Hosting '$req->namehosting' thành công !");
         return redirect()->route('admin.listhosting');
     }
@@ -73,23 +69,18 @@ class adminController extends Controller
         } else{
             {{ echo "<h1> Lỗi Không Nhận Diện Được Dịch Vụ</h1>"; }}
         }
-
         return view('admin/edit_service', compact('product'));
     }
     
     function post_edithosting(Request $req, $id){
         $data = $req->except(['_token']);
-        
         $slug = $data['name_Hosting'];
         $slug = preg_replace('/[^a-zA-Z0-9\s]/', '', $slug);
         $slug = iconv('UTF-8', 'ASCII//TRANSLIT', $slug);
         $slug = str_replace(' ', '-', $slug);
-
         $img = $req->img;
         $image = "imgupload/$img";
         $binaryImage = $image;
-
-
             DB::table('hosting')
             ->where('ID', $id)
             ->update([
@@ -100,11 +91,8 @@ class adminController extends Controller
             'GiaTien' => $data['GiaTien'],
             'data_Hosting' => $data['bandwith'],
             'slug'=> $slug
-
             ]);
-
             Session::flash('success_edit', "Đã update '$req->name_Hosting' thành công");
-
         return redirect()->route('admin.listhosting');
     }
 
@@ -144,12 +132,9 @@ class adminController extends Controller
         $slug = preg_replace('/[^a-zA-Z0-9\s]/', '', $slug);
         $slug = iconv('UTF-8', 'ASCII//TRANSLIT', $slug);
         $slug = str_replace(' ', '-', $slug);
-        
         $img = $req->img;
         $image = "imgupload/$img";
         $binaryImage = $image;
-
-
         $vps = new vps;
         $vps->img = $binaryImage;
         $vps->name = $req->namevps;
@@ -159,9 +144,7 @@ class adminController extends Controller
         $vps->bandwidth = $req->bandwidth;
         $vps->slug = $slug;
         $vps->save();
-
         Session::flash('addvps', "Đã tạo mới VPS '$req->namevps' thành công !");
-
         return redirect()->route('admin.listvps');
     }
 
@@ -215,11 +198,6 @@ class adminController extends Controller
         return view('admin/confirmvps', compact('vps'));
     }
 
-    
-    function showcart(){
-        $cart = cart::all();
-        return view('layout/showcart', compact('cart'));
-    }
 
 
     // user controller
@@ -227,6 +205,7 @@ class adminController extends Controller
     function listclient(){
         $client = user::where('is_admin', '0')->get();
         return view('admin/listclient', compact('client'));
+
     }
 
     function adduser(){
@@ -280,6 +259,10 @@ class adminController extends Controller
         return redirect()->route('listclient');
     }
 
+    function changeroleuser(){
+        $user = user::where('is_admin', '0')->get();
+        return view('admin/change_role_user', compact('user'));
+    }
 
 
 }

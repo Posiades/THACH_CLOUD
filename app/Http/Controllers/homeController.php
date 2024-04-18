@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use App\Models\hosting;
 use App\Models\vps;
+use App\Models\tickets;
+use Illuminate\Support\Facades\Auth;
+
 class homeController extends Controller
 {
     function index(){
@@ -41,6 +44,20 @@ class homeController extends Controller
         $content = $req -> content;
         Mail::to('thachnguyenngoc2504@gmail.com')->send(new contract($name, $phone, $email, $content));
         Session::flash('contract', "Đã gửi phản hồi của bạn thành công, xin cảm ơn sự đóng góp của bạn");
+        $tickets = new tickets;
+        if(Auth::check()){
+            $tickets -> id_User = Auth::user()->id;
+            $tickets -> phone_number = $phone;
+            $tickets -> title = "Phản Hồi Từ Contract";
+            $tickets -> mo_ta = $content;
+            $tickets->save();
+        }else{
+            $tickets -> phone_number = $phone;
+            $tickets -> title = "Phản Hồi Từ Contract";
+            $tickets -> mo_ta = $content;
+            $tickets->save();
+        }
+
         return view('layout/contract');
     }
     

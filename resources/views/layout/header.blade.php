@@ -51,7 +51,7 @@
                                  @if(Auth::user()->is_admin == 1)
                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                    {{-- {{-- <a class="dropdown-item" href="#">Item 1</a> --}}
-                                   <a class="dropdown-item" href="{{route('admin.dashboard')}}">DashBoard</a>
+                                   <a class="dropdown-item" href="{{route('dashboard')}}">DashBoard</a>
                                    <a class="dropdown-item" href="{{route('user.logout')}}">Đăng Xuất</a>
                                </div>
                                @else

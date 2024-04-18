@@ -23,10 +23,12 @@
             <div class="row">
                 <div class="col-12">
                     <h3>Hiện trên hệ thống có: <strong>{{count($user)}}</strong> </h3>
-                    <h3>Tài Khoản Người dùng</h3>
+                    <h3>Tài Khoản Người Dùng</h3>
                 </div>
             </div>
         </div>
     </div>
    </div>
+
+
 @endsection

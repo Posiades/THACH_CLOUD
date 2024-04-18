@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_User');
             $table->foreign('id_User')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('phone_number');
             $table->string('title');
             $table->string('mo_ta');
-            $table->timestamp('date_create');
             $table->enum('status', ['Chưa Hỗ Trợ', 'Đã Hỗ Trợ'])->default('Chưa Hỗ Trợ');
+            $table->timestamp('date_create');
             $table->timestamps();
         });
     }

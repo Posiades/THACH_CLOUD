@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
-use App\Models\cart;
 use App\Models\User;
-use Database\Seeders\user as SeedersUser;
 
 class userController extends Controller
 {

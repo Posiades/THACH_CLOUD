@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class tickets extends Model
 {
+    protected $tickets = 'tickets';
     use HasFactory;
 }
