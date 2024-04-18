@@ -71,17 +71,17 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
-            <span>HOSTING</span>
+            <span>FUNCTIONAL SERVICE</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">FUNCTION HOSTING</h6>
                 <a class="collapse-item" href="{{ route('admin.listhosting') }}">SHOW LIST HOSTING</a>
-                <a class="collapse-item" href="{{ route('admin.addhosting') }}">ADD HOSTING</a>
+                <a class="collapse-item" href="{{ route('admin.add_service', ['type'=>"hosting"]) }}">ADD HOSTING</a>
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">FUCTION VPS</h6>
                 <a class="collapse-item" href="{{route('admin.listvps')}}">SHOW LIST VPS</a>
-                <a class="collapse-item" href="{{route('admin.addvps')}}">ADD VPS</a>
+                <a class="collapse-item" href="{{route('admin.add_service', ['type'=>"vps"])}}">ADD VPS</a>
             </div>
         </div>
     </li>

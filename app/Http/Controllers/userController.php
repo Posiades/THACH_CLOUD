@@ -86,7 +86,7 @@ class userController extends Controller
             'password' =>  Hash::make($password)
         ]);
         }else{
-
+                
         }
 
         Session::flash('success_resetpass', "Đã Thay Đổi Mật Khẩu Thành Công");

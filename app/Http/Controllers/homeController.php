@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\contract;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use App\Models\hosting;
 use App\Models\vps;
 class homeController extends Controller
@@ -27,7 +30,17 @@ class homeController extends Controller
         return view('layout/vps', compact('vps'));
     }
 
-    function contract(){
+    function contract(Request $req){
+        return view('layout/contract');
+    }
+
+    function post_contract(Request $req){
+        $name = $req -> name;
+        $phone = $req -> phone;
+        $email = $req -> email;
+        $content = $req -> content;
+        Mail::to('thachnguyenngoc2504@gmail.com')->send(new contract($name, $phone, $email, $content));
+        Session::flash('contract', "Đã gửi phản hồi của bạn thành công, xin cảm ơn sự đóng góp của bạn");
         return view('layout/contract');
     }
     

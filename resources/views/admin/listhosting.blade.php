@@ -26,7 +26,7 @@
             <h2 class="text-center">List of Hostings</h2>
         </div>
         <div class="col-md-3 text-right">
-            <a href="{{ route('admin.addhosting') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add Hosting</a>
+            <a href="{{ route('admin.add_service', ['type'=>$hosting->type_product]) }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add Hosting</a>
         </div>
     </div>
     <table class="table">

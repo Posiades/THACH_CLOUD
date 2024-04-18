@@ -26,7 +26,7 @@
             <h2 class="text-center">List of VPS</h2>
         </div>
         <div class="col-md-3 text-right">
-            <a href="{{ route('admin.addvps') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add VPS</a>
+            <a href="{{ route('admin.add_service', ['type'=>$vps->type_product]) }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add VPS</a>
         </div>
     </div>
     <table class="table">

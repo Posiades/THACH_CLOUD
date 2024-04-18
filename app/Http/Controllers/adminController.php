@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\cart;
 use App\Models\hosting;
@@ -13,7 +14,10 @@ use App\Models\User;
 class adminController extends Controller
 {
     function dashboard(){
-        return view('admin/index');
+        $hosting = hosting::all();
+        $vps = vps::all();
+        $user = user::where('is_admin', '0')->get();
+        return view('admin/index', compact('hosting', 'vps', 'user'));
     }
 
 
@@ -22,8 +26,16 @@ class adminController extends Controller
         return view('admin/listhosting', compact('hosting'));
     }
     
-    function addhosting(){
-        return view('admin/addhosting');
+    function add_service($type){
+        if($type == "hosting"){
+            $product = "hosting";
+        }else if($type == "vps"){
+            $product = "vps";
+        }else{
+            {{echo "<h1> Lỗi Không Xác Định Được Loại Service </h1>";}}
+        }
+
+        return view('admin.add_service', compact('product'));
     }
 
     function post_addhosting(Request $req){
@@ -101,7 +113,10 @@ class adminController extends Controller
             $product = hosting::findOrFail($id);
         }else if($type == "vps"){
             $product = vps::findOrFail($id);
-        } else{
+        } else if($type == "user"){
+            $product = user::findOrFail($id);
+        }
+         else{
             {{echo "<h1> Lỗi Không Nhận Diện Được Loại Dịch Vụ </h1>";}}
         }
 
@@ -122,10 +137,6 @@ class adminController extends Controller
     function listvps(){
         $vps = vps::all();
         return view('admin/listvps', compact('vps'));
-    }
-
-    function addvps(){
-        return view('admin/addvps');
     }
 
     function post_addvps(Request $req){
@@ -217,6 +228,23 @@ class adminController extends Controller
         $client = user::where('is_admin', '0')->get();
         return view('admin/listclient', compact('client'));
     }
+
+    function adduser(){
+        return view('admin.adduser');
+    }
+
+    function post_adduser(Request $req){
+        $passwordHashed = Hash::make($req->password);
+        user::create([
+            'username' => $req->username,
+            'email' => $req->email,
+            'password' => $passwordHashed,
+        ]);
+
+        Session::flash('adduser', "Đã thêm Người Dùng '$req->username' thành công");
+
+        return redirect()->route('listclient');
+    }
     
     function edituser($id){
         $user = user::findOrFail($id);
@@ -241,7 +269,16 @@ class adminController extends Controller
         return view('admin.searchuser', compact('user_respon'));
     }
 
+    function deleteuser($id){
+        $user = user::findOrFail($id);
+        DB::table('users')
+        ->where('id', $id)
+        ->delete();
 
+        Session::flash('deleteuser', "Đã Xóa Người Dùng '$user->username' thành công");
+
+        return redirect()->route('listclient');
+    }
 
 
 
