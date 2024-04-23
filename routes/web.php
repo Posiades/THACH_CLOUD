@@ -73,6 +73,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkadmin'], function () {
     Route::post('/post_adduser', [adminController::class, 'post_adduser'])->name('post_adduser');
     Route::delete('/delete_user/{id}', [adminController::class, 'deleteuser'])->name('admin.delete_user');
     Route::get('/changeroleuser', [adminController::class, 'changeroleuser'])->name('changeroleuser');
+    Route::post('/post_changerole/{id}', [adminController::class, 'post_changerole'])->name('post_changerole');
 
 // ===========
     Route::get('/edit_service/{type}/{id}', [adminController::class, 'edit_service'])->name('admin.editservice');

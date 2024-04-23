@@ -260,8 +260,20 @@ class adminController extends Controller
     }
 
     function changeroleuser(){
-        $user = user::where('is_admin', '0')->get();
-        return view('admin/change_role_user', compact('user'));
+        $client = user::where('is_admin', 0)->get();
+        return view('admin/changerole', compact('client'));
+    }
+
+    function post_changerole(Request $req, $id){
+        $client = user::findOrFail($id);
+        DB::table('users')
+        -> where('id', $id)
+        -> update([
+            'is_admin' => 1
+        ]);
+
+        Session::flash('uprole', "Đã Update role '$client->username' thành công và có quyền truy cập admin");
+        return redirect()->route('changeroleuser');
     }
 
 
