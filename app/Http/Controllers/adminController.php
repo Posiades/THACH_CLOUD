@@ -11,6 +11,7 @@ use App\Models\hosting;
 use App\Models\vps;
 use App\Models\User;
 use App\Models\tickets;
+use Illuminate\Auth\Events\Validated;
 
 class adminController extends Controller
 {
@@ -275,6 +276,70 @@ class adminController extends Controller
         Session::flash('uprole', "Đã Update role '$client->username' thành công và có quyền truy cập admin");
         return redirect()->route('changeroleuser');
     }
+
+
+    // GUI function  
+
+    function change_logo(){
+        return view('admin.change_logo');
+    }
+
+    function post_change_logo(Request $req){
+        $image = $req->fileimg;
+
+        $targetDir = public_path('imgupload/');
+        $targetFile = $targetDir . basename($_FILES["fileimg"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
+        
+        // Kiểm tra xem file có phải là file ảnh hay không
+        if(isset($image)) {
+            $check = getimagesize($_FILES["fileimg"]["tmp_name"]);
+            if($check !== false) {
+                $messes = "File is an image - " . $check["mime"] . ".";
+                $uploadOk = 1;
+            } else {
+                $messes = "File is not an image.";
+                $uploadOk = 0;
+            }
+        }
+        
+        // Kiểm tra xem file đã tồn tại chưa
+        if (file_exists($targetFile)) {
+            $messes = "Sorry, file already exists.";
+            $uploadOk = 0;
+        }
+        
+        // Kiểm tra kích thước file
+        if ($_FILES["fileimg"]["size"] > 500000) {
+            $messes = "Sorry, your file is too large.";
+            $uploadOk = 0;
+        }
+        
+        // Cho phép các loại file ảnh nhất định
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif" ) {
+            $messes = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+        }
+        
+        // Kiểm tra xem biến $uploadOk có được đặt thành 0 hay không
+        if ($uploadOk == 0) {
+            $messes = "Sorry, your file was not uploaded or not input.";
+        // Nếu mọi thứ đều ổn, thử di chuyển file
+        } else {
+            if (move_uploaded_file($_FILES["fileimg"]["tmp_name"], $targetFile)) {
+                $messes = "The file ". basename( $_FILES["fileimg"]["name"]). " has been uploaded.";
+            } else {
+                $messes = "Sorry, there was an error uploading your file.";
+            }
+        }
+
+        return view('admin.change_logo', compact('messes'));
+    }
+
+
+
 
 
 }

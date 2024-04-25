@@ -92,4 +92,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkadmin'], function () {
     Route::post('/post_editvps/{id}', [adminController::class, 'post_editvps'])->name('admin.post_editvps');
     Route::post('/post_addvps', [adminController::class, 'post_addvps'])->name('admin.post_addvps');
     Route::delete('/delete_vps/{id}', [adminController::class, 'delete_vps'])->name('admin.delete_vps');
+
+
+    // GUI Routes
+    Route::get('/change_logo', [adminController::class, 'change_logo'])->name('change_logo_interface');
+    Route::post('/post_change_logo', [adminController::class, 'post_change_logo'])->name('post_change_logo');
+
 });
