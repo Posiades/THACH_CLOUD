@@ -31,7 +31,7 @@
                            @foreach($lines as $line)
                            <li><span class="bullet">&#10003; </span> {{$line}}</li>
                            @endforeach
-                           <li><strong>Băng Thông:</strong>{{$hosting->bandwith}}MB/S</li>
+                           <li><strong>Băng Thông: </strong>{{$hosting->bandwidth}}MB/S</li>
                         </ul>
                      </div>
                      <form action="" method="post">

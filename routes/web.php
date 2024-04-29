@@ -97,5 +97,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkadmin'], function () {
     // GUI Routes
     Route::get('/change_logo', [adminController::class, 'change_logo'])->name('change_logo_interface');
     Route::post('/post_change_logo', [adminController::class, 'post_change_logo'])->name('post_change_logo');
+    Route::get('/change_footer', [adminController::class, 'change_footer'])->name('change_footer_interface');
 
 });

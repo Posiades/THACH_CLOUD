@@ -285,14 +285,16 @@ class adminController extends Controller
     }
 
     function post_change_logo(Request $req){
-        $image = $req->fileimg;
 
-        $targetDir = public_path('imgupload/');
-        $targetFile = $targetDir . basename($_FILES["fileimg"]["name"]);
+        $image = $req->fileimg;
+        $name_file = $_FILES["fileimg"]["name"];
+        $file_extension = pathinfo($name_file, PATHINFO_EXTENSION);
+
+        $targetDir = public_path('images/');
+        $name_file_convert = 'logo'. '.' .$file_extension;
+        $targetFile = $targetDir . basename($name_file_convert);
         $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
-        
-        // Kiểm tra xem file có phải là file ảnh hay không
+
         if(isset($image)) {
             $check = getimagesize($_FILES["fileimg"]["tmp_name"]);
             if($check !== false) {
@@ -304,31 +306,21 @@ class adminController extends Controller
             }
         }
         
-        // Kiểm tra xem file đã tồn tại chưa
-        if (file_exists($targetFile)) {
-            $messes = "Sorry, file already exists.";
-            $uploadOk = 0;
-        }
-        
-        // Kiểm tra kích thước file
         if ($_FILES["fileimg"]["size"] > 500000) {
             $messes = "Sorry, your file is too large.";
             $uploadOk = 0;
         }
         
-        // Cho phép các loại file ảnh nhất định
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif" ) {
-            $messes = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        if($file_extension != "png" ) {
+            $messes = "Sorry, only PNG files are allowed.";
             $uploadOk = 0;
         }
         
-        // Kiểm tra xem biến $uploadOk có được đặt thành 0 hay không
         if ($uploadOk == 0) {
             $messes = "Sorry, your file was not uploaded or not input.";
-        // Nếu mọi thứ đều ổn, thử di chuyển file
         } else {
             if (move_uploaded_file($_FILES["fileimg"]["tmp_name"], $targetFile)) {
+               
                 $messes = "The file ". basename( $_FILES["fileimg"]["name"]). " has been uploaded.";
             } else {
                 $messes = "Sorry, there was an error uploading your file.";
@@ -338,6 +330,11 @@ class adminController extends Controller
         return view('admin.change_logo', compact('messes'));
     }
 
+    function change_footer(){
+        return view('admin.change_footer');
+    }
+
+    
 
 
 

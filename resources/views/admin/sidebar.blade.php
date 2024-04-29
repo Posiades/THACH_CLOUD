@@ -34,7 +34,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Interface:</h6>
                 <a class="collapse-item" href="{{route('change_logo_interface')}}">Change Logo Website</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
+                <a class="collapse-item" href="{{route('change_footer_interface')}}">Change Footer Website</a>
             </div>
         </div>
     </li>
