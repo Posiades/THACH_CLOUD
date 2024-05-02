@@ -15,7 +15,7 @@ class hosting extends Seeder
     {
         DB::table('hosting')->insert([
             'img'=>'img/hosting_Eco.png',
-            'name'=>'Pro Gold Hosting',
+            'name'=>'Persional Hosting',
             'type'=>'Persional',
             'mo_ta'=>
             '2 CPU core Intel Xeon Gold
@@ -33,7 +33,7 @@ class hosting extends Seeder
         ]);
         DB::table('hosting')->insert([
             'img'=>'img/hosting_Gold.png',
-            'name'=>'Premium Business Hosting',
+            'name'=>'Business Hosting',
             'type'=>'Business',
             'mo_ta'=>
             '2 CPU core Intel Xeon Platinum Gen 2
@@ -53,7 +53,7 @@ class hosting extends Seeder
         ]);
         DB::table('hosting')->insert([
             'img'=>'img/hosting_Pro.png',
-            'name'=>'Turbo Business Hosting',
+            'name'=>'Extra Business Hosting',
             'type'=>'Business',
             'mo_ta'=>
             '6 CPU core Intel Xeon Platinum Gen 3

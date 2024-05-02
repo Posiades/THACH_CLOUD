@@ -21,17 +21,17 @@ use App\Models\vps;
 // });
 
 
-Route::get('/listhosting', function(){
+Route::get('/apihosting', function(){
     $hosting = hosting::get();
     return response()->json(['data' => $hosting]);
 });
 
-Route::get('/listvps', function(){
+Route::get('/apivps', function(){
     $vps = vps::get();
     return response()->json(['data' => $vps]);
 });
 
-Route::get('/index', function(){
+Route::get('/apiindex', function(){
     $hosting = hosting::get();
     $vps = vps::get();
     return response()->json(['data'=> $hosting, 'data2'=>$vps]);

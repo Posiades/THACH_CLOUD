@@ -26,7 +26,6 @@
                         <br> <br>
                            <strong>Thay mặt <span class="blue_light"><strong>THACH CLOUD</strong></span> <br> Tôi Nguyễn Ngọc Thạch - FOUNDER & CEO, Mong muốn gửi lời tri ân chân thành nhất đến khách hàng.</strong>
                      </p>
-                     <!-- <a class="read_more" href="Javascript:void(0)">Read More</a> -->
                   </div>
                </div>
             </div>

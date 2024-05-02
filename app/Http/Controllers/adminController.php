@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Route;
 use App\Models\cart;
 use App\Models\hosting;
 use App\Models\vps;
@@ -334,9 +335,32 @@ class adminController extends Controller
         return view('admin.change_footer');
     }
 
+    // public function post_changefooter(Request $req){
+    //     $col_1 = $req->col1;
+    //     $col_2 = $req->col2;
+    //     $col_3 = $req->col3;
+    //     $default = 0;
+    //     if ($col_1 != null || $col_2 != null || $col_3 != null) {
+    //         $value_change = 1;
+    //     } else {
+    //         if (isset($req->default)) {
+    //             $value_change = $req->default;
+    //         } else {
+    //            $value_change = $default;
+    //         }
+    //     }
+    
+    //     return view(
+
+
+            
+    //     )
+
+    
+    }
     
 
 
 
 
-}
+

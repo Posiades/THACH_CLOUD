@@ -15,7 +15,7 @@ class vps extends Seeder
     {
         DB::table('vps')->insert([
             'img'=>'img/vps_Eco.png',
-            'name'=>'VPS 1',
+            'name'=>'VPS Economy',
             'mo_ta'=>'CPU: 05
             RAM: 16GB
             Hệ điều hành: CentOS, Ubuntu, Debian, Windows
@@ -34,7 +34,7 @@ class vps extends Seeder
         ]);
         DB::table('vps')->insert([
             'img' => 'img/vps_Gold.png',
-            'name'=>'VPS 2',
+            'name'=>'VPS Premium',
             'mo_ta'=>'CPU: 06
             RAM: 24GB
             Hệ điều hành: CentOS, Ubuntu, Debian, Windows
@@ -53,7 +53,7 @@ class vps extends Seeder
         ]);
         DB::table('vps')->insert([
             'img'=>'img/vps_Pro.png',
-            'name'=>'VPS 3',
+            'name'=>'VPS Ultimate',
             'mo_ta'=>'CPU: 12 vCPU
             RAM: 64GB
             Hệ điều hành: CentOS, Ubuntu, Debian, Windows

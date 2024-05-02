@@ -2,15 +2,76 @@
 @section('title', 'TRANG CHỦ')
 @section('bodyclass', 'main-layout')
 @section('content')
-<div class="full_bg">
-   <div class="slider_main">
-     <div class="container">
-       
-      
-
-     </div>
-   </div>
- </div>
+         <div class="full_bg">
+            <div class="slider_main">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div id="banner1" class="carousel slide">
+                           <ol class="carousel-indicators">
+                              <li data-target="#banner1" data-slide-to="0" class="active"></li>
+                              <li data-target="#banner1" data-slide-to="1"></li>
+                              <li data-target="#banner1" data-slide-to="2"></li>
+                           </ol>
+                           <div class="carousel-inner">
+                              <!-- first slide -->
+                              <div class="carousel-item active">
+                                 <div class="carousel-caption relative">
+                                    <div class="row">
+                                       <div class="col-md-6">
+                                          <div class="dream">
+                                             <h1>
+                                                HOSTING NHANH <br>MẠNH MẼ <br>DUNG LƯỢNG CAO <br>GIÁ CỰC RẺ
+                                             </h1>
+                                             <a class="read_more" href="{{route('hosting')}}">Get Stared</a>    
+                                             <a class="read_more" href="{{route('contract')}}">Contact Us</a>
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class="dream_img">
+                                             <figure><img src="{{asset('images/dream_img.png')}}" alt="#"/></figure>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- second slide -->
+                              <div class="carousel-item">
+                                 <div class="carousel-caption relative">
+                                    <div class="row">
+                                       <div class="col-md-6">
+                                          <div class="dream">
+                                             <h1>
+                                                VPS MẠNH MẼ <br>TỐC ĐỘ CAO <br>PHẦN CỨNG KHỦNG <br>GIÁ CẢ HỢP LÝ
+                                             </h1>
+                                             <a class="read_more" href="{{route('vps')}}">Get Stared</a>    
+                                             <a class="read_more" href="{{route('contract')}}">Contact Us</a>
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class="dream_img">
+                                             <figure><img src="images/dream_img.png" alt="#"/></figure>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- controls -->
+                           <a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
+                           <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                           <span class="sr-only">Previous</span>
+                           </a>
+                           <a class="carousel-control-next" href="#banner1" role="button" data-slide="next">
+                           <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                           <span class="sr-only">Next</span>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+            </div>
+            </div>
+         </div>
       <!-- end banner -->
       <!-- guarantee -->
       <div class="guarantee">
