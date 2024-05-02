@@ -40,10 +40,3 @@ To get started with Thach Cloud, follow these steps:
 
 You can access my website through the link [THACH CLOUD](https://nguyenngocthach.id.vn/)
 
-## Contributing
-
-Contributions are welcome! Please read the [contribution guidelines](link_to_contributing_guidelines) before making any pull requests.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](link_to_license) file for details.
