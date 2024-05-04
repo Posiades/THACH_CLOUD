@@ -13,6 +13,15 @@ use App\Models\User;
 
 class userController extends Controller
 {
+    private function verifyCaptcha($captcha_response){
+        $client = new \GuzzleHttp\Client();
+        $response = $client->post('https://www.google.com/recaptcha/api/siteverify', [
+            'form_params' => [
+                'secret' => '6LeyCaQpAAAAAMbdXes36u_41oe7fOEpU6KvRX_a',
+                'response' => $captcha_response,
+            ]
+        ]);
+    }
     function login(){
         return view('layout/login');
     }
@@ -33,14 +42,20 @@ class userController extends Controller
     }
     
     function post_login(Request $req) {
-        if (Auth::attempt($req->only('email', 'password'))) {
-            if (Auth::user()->is_admin == 1) {
-                return redirect()->route('dashboard');
+        $captcha_response = $req->input('g-recaptcha-response');
+        $is_captcha_valid = $this->verifyCaptcha($captcha_response);
+        if ($is_captcha_valid){
+            if (Auth::attempt($req->only('email', 'password'))) {
+                if (Auth::user()->is_admin == 1) {
+                    return redirect()->route('dashboard');
+                } else {
+                    return redirect()->route('index');
+                }
             } else {
-                return redirect()->route('index');
+                Session::flash('login_fail', 'Sai tên email hoặc mật khẩu');
             }
-        } else {
-            return redirect()->back()->with('err', 'Sai tên đăng nhập hoặc mật khẩu');
+        }else{
+            return back()->withErrors(['captcha' => 'Captcha verification failed.']);
         }
     }
 
@@ -84,7 +99,7 @@ class userController extends Controller
             'password' =>  Hash::make($password)
         ]);
         }else{
-                
+                Session::flash('pass_fail', 'Lỗi không thể thay đổi Password');
         }
 
         Session::flash('success_resetpass', "Đã Thay Đổi Mật Khẩu Thành Công");
