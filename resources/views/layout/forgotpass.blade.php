@@ -19,6 +19,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="card-body">
+                        @if (session('captcha_fail'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ session('captcha_fail') }}
+                            </div>
+                        @endif
 
                     <form method="POST" action="{{ route('user.changepass')}}">
                         @csrf
@@ -34,6 +40,7 @@
                         </div>
                         <br>
                         <div class="form-group captcha">
+                            <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
                             <div class="g-recaptcha" data-sitekey="6LeyCaQpAAAAAHAUNtmzjy7YN4ASUvop3VfUDigK"></div>
                         </div>
                         <br>

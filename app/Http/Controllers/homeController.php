@@ -42,6 +42,7 @@ class homeController extends Controller
         $phone = $req -> phone;
         $email = $req -> email;
         $content = $req -> content;
+        $anonymous = 88888888;
         Mail::to('thachnguyenngoc2504@gmail.com')->send(new contract($name, $phone, $email, $content));
         Session::flash('contract', "Đã gửi phản hồi của bạn thành công, xin cảm ơn sự đóng góp của bạn");
         $tickets = new tickets;
@@ -52,6 +53,7 @@ class homeController extends Controller
             $tickets -> mo_ta = $content;
             $tickets->save();
         }else{
+            $tickets -> id_User = $anonymous;
             $tickets -> phone_number = $phone;
             $tickets -> title = "Phản Hồi Từ Contract";
             $tickets -> mo_ta = $content;
@@ -73,7 +75,6 @@ class homeController extends Controller
         }else{
             return view('layout.login');
         }
-
         return view('layout/detail', compact('product'));
     }
 

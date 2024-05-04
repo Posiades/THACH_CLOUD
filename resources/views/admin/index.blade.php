@@ -1,34 +1,35 @@
 @extends('admin/layout')
 @section('title', 'Dashboard')
 @section('noidung')
-   <div class="container">
+<div class="container">
     <div class="row">
-        <div class="col-4">
-            <div class="row">
-                <div class="col-12">
-                    <h4>Hiện trên hệ thống có: <strong>{{count($hosting)}}</strong> </h4>
-                    <h4>Dịch vụ Hosting</h4>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Dịch vụ Hosting</h4>
+                    <p class="card-text">Hiện trên hệ thống có: <strong>{{count($hosting)}}</strong></p>
                 </div>
             </div>
         </div>
-        <div class="col-4">
-            <div class="row">
-                <div class="col-12">
-                    <h4>Hiện trên hệ thống có: <strong>{{count($vps)}}</strong> </h4>
-                    <h4>Dịch vụ VPS</h4>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Dịch vụ VPS</h4>
+                    <p class="card-text">Hiện trên hệ thống có: <strong>{{count($vps)}}</strong></p>
                 </div>
             </div>
         </div>
-        <div class="col-4">
-            <div class="row">
-                <div class="col-12">
-                    <h3>Hiện trên hệ thống có: <strong>{{count($user)}}</strong> </h3>
-                    <h3>Tài Khoản Người Dùng</h3>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Tài Khoản Người Dùng</h4>
+                    <p class="card-text">Hiện trên hệ thống có: <strong>{{count($user)}}</strong></p>
                 </div>
             </div>
         </div>
     </div>
-   </div>
+</div>
+
 
 
 @endsection

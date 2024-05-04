@@ -10,7 +10,7 @@
       <meta name="author" content="Thach Cloud">
       <link rel="stylesheet" href="{{ asset('css/style.css') }}">
       <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-      <link rel="icon" href="{{ asset('images/fevicon.png') }}" type="image/gif">
+      <link rel="icon" href="{{ asset('images/icons/logo.png') }}" type="image/gif">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-F1qfDMzWhaAOq92sXdF6Be8LwJwy3kGn9vEyIbEaL4lFX0e2xr0UIgnddveva6cF" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">

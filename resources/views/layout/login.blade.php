@@ -10,11 +10,7 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-@if(Session::has('success_resetpass'))
-    <div class="alert alert-success">
-        {{ Session::get('success_resetpass') }}
-    </div>
-@endif
+
     <div class="main">
         <section class="sign-in">
             <div class="container">
@@ -26,7 +22,16 @@
                     </div>
                     <div class="signin-form">
                         <h2 class="form-title">Sign in</h2>
-                        <!-- Hiển thị thông báo lỗi nếu có -->
+                        @if(Session::has('login_fail'))
+                            <div class="alert alert-success" role="alert">
+                                {{ Session::get('login_fail') }}
+                            </div>
+                        @endif
+                        @if(Session::has('captcha_fail'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ Session::get('captcha_fail') }}
+                            </div>
+                        @endif
                         @if ($errors->any())
                             <div class="error">
                                 @foreach ($errors->all() as $error)
@@ -49,6 +54,7 @@
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
                             </div>
                             <div class="form-group captcha">
+                                <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
                                 <div class="g-recaptcha" data-sitekey="6LeyCaQpAAAAAHAUNtmzjy7YN4ASUvop3VfUDigK"></div>
                             </div>
                             <div class="form-group form-button">

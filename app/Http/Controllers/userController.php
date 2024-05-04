@@ -9,19 +9,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
-use App\Models\User;
+use App\Models\User;    
 
 class userController extends Controller
 {
-    private function verifyCaptcha($captcha_response){
-        $client = new \GuzzleHttp\Client();
-        $response = $client->post('https://www.google.com/recaptcha/api/siteverify', [
-            'form_params' => [
-                'secret' => '6LeyCaQpAAAAAMbdXes36u_41oe7fOEpU6KvRX_a',
-                'response' => $captcha_response,
-            ]
-        ]);
-    }
+
     function login(){
         return view('layout/login');
     }
@@ -32,32 +24,49 @@ class userController extends Controller
     
     function post_register(Request $req){
         $passwordHashed = Hash::make($req->password); 
-           user::create([
-               'username' => $req->username,
-               'email' => $req->email,
-               'password' => $passwordHashed,
-           ]);
-        
-        return redirect()->route('login');
+        $pass_raw = $req -> password;
+        $pass_re = $req -> re_pass; 
+        if($pass_raw == $pass_re){
+            if(isset($req->agree)){
+                user::create([
+                    'username' => $req->username,
+                    'email' => $req->email,
+                    'password' => $passwordHashed,
+                ]); 
+                return redirect()->route('login');            
+            } else {
+                Session::flash('register_fail', 'Bạn phải chấp nhận điều khoản của chúng tôi');
+                return redirect()->back();
+            }
+        } else {
+            Session::flash('pass_fail', '2 Mật khẩu nhập vào không giống nhau');
+            return redirect()->back();
+        }        
     }
     
-    function post_login(Request $req) {
-        $captcha_response = $req->input('g-recaptcha-response');
-        $is_captcha_valid = $this->verifyCaptcha($captcha_response);
-        if ($is_captcha_valid){
-            if (Auth::attempt($req->only('email', 'password'))) {
-                if (Auth::user()->is_admin == 1) {
-                    return redirect()->route('dashboard');
+    function post_login(Request $req) {  
+        if(isset($_POST['g-recaptcha-response'])){
+            $secret = '6LeyCaQpAAAAAMbdXes36u_41oe7fOEpU6KvRX_a'; 
+            $verify_response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
+            $response_data = json_decode($verify_response);
+            if($response_data->success){
+                if (Auth::attempt($req->only('email', 'password'))) {
+                    if (Auth::user()->is_admin == 1) {
+                        return redirect()->route('dashboard');
+                    } else {
+                        return redirect()->route('index');
+                    }
                 } else {
-                    return redirect()->route('index');
+                    Session::flash('login_fail', 'Sai tên email hoặc mật khẩu');
+                    return redirect()->back();
                 }
             } else {
-                Session::flash('login_fail', 'Sai tên email hoặc mật khẩu');
+                Session::flash('captcha_fail', 'Xác thực reCAPTCHA không thành công');
+                return redirect()->back();
             }
-        }else{
-            return back()->withErrors(['captcha' => 'Captcha verification failed.']);
         }
     }
+   
 
     function logout(){
         Session::flush();
@@ -70,14 +79,28 @@ class userController extends Controller
     }
     
     function post_mailconfirm(Request $req){
-            $stringmail = $req -> email;
-            $email = explode("@", $stringmail)[0];
-            $token = openssl_random_pseudo_bytes(32);
-            $hashedToken = hash('sha256', $token);
-            session()->put($email, $hashedToken, 60*5);
-            Mail::to($stringmail)->send(new changePass($hashedToken, $email));
-            Session::flash('success_sendmail_resetpass', "Đã gửi mail đến $stringmail vui lòng check mail để thay đổi mật khẩu");
-            return redirect()->back()->with('message', 'Email xác nhận đã được gửi.'); 
+        if(isset($_POST['g-recaptcha-response'])){
+            $secret = '6LeyCaQpAAAAAMbdXes36u_41oe7fOEpU6KvRX_a'; 
+            $verify_response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
+            $response_data = json_decode($verify_response);
+            if($response_data->success){
+                $stringmail = $req -> email;
+                $email = explode("@", $stringmail)[0];
+                $token = openssl_random_pseudo_bytes(32);
+                $hashedToken = hash('sha256', $token);
+                session()->put($email, $hashedToken, 60*5);
+                Mail::to($stringmail)->send(new changePass($hashedToken, $email));
+                Session::flash('success_sendmail_resetpass', "Đã gửi mail đến $stringmail vui lòng check mail để thay đổi mật khẩu");
+                return redirect()->back()->with('message', 'Email xác nhận đã được gửi.'); 
+            } else {
+                Session::flash('captcha_fail', 'Xác thực reCAPTCHA không thành công');
+                return redirect()->back();
+            }
+        }
+
+
+
+            
      }
 
      function passreset($token, $email){

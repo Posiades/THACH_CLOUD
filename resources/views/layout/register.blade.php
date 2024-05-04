@@ -10,9 +10,20 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
+        
     <div class="main">
         <section class="signup">
             <div class="container">
+                @if(Session::has('register_fail'))
+            <div class="alert aalert-danger" role="alert">
+            {{ Session::get('register_fail') }}
+            </div>
+            @endif
+            @if(Session::has('pass_fail'))
+            <div class="alert aalert-danger" role="alert">
+            {{ Session::get('pass_fail') }}
+            </div>
+            @endif
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
@@ -35,7 +46,7 @@
                                 <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                <input type="checkbox" name="agree" id="agree-term" class="agree-term" />
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
                             </div>
                             <div class="form-group form-button">
@@ -45,7 +56,7 @@
                     </div>
                     <div class="signup-image">
                         <figure><img src="{{asset('images/signup-image.jpg')}}" alt="sing up image"></figure>
-                        <a href="#" class="signup-image-link">I am already member</a>
+                        <a href="{{route('login')}}" class="signup-image-link">I am already member</a>
                     </div>
                 </div>
             </div>
