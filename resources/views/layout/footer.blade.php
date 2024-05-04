@@ -25,7 +25,7 @@
                <div class="infoma">
                   <h3>Liên Hệ - Hỗ Trợ</h3>
                   <ul class="conta">
-                     <li><i class="fa fa-map-marker" aria-hidden="true"></i>Địa Chỉ : Tầng 8 - Bitexxo, Ngô Đức Kế, Bén Nghé, Q.1, TP Hồ Chí Minh
+                     <li><i class="fa fa-map-marker" aria-hidden="true"></i>Địa Chỉ : Tầng 8 - Bitexxo, Ngô Đức Kế, Bến Nghé, Q.1, TP Hồ Chí Minh
                      </li>
                      <li><i class="fa fa-phone" aria-hidden="true"></i>Hot Line : +84 826010715</li>
                      <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> Email : Cloudviet@thachcloud.com</a></li>

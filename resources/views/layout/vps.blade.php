@@ -8,7 +8,7 @@
           <div class="col-md-8 offset-md-2">
              <div class="titlepage text_align_center">
                 <h2>KHÁM PHÁ CÁC GÓI DỊCH VỤ TUYỆT VỜI TẠI THACH CLOUD <br> <br> <span class="blue_light">ĐĂNG KÝ NGAY</span></h2>
-                <p> <strong>THACH CLOUD</strong> cam kết mang đến cho bạn dịch vụ cloud hosting uy tín, chất lượng, giá cả tốt nhất thị trường. Ngoài ra, sản phẩm của chúng tôi còn mang đến cho bạn
+                <p> <strong>THACH CLOUD</strong> cam kết mang đến cho bạn dịch vụ máy chủ VPS mạnh mẽ, chất lượng, giá cả tốt nhất thị trường. Ngoài ra, sản phẩm của chúng tôi còn mang đến cho bạn
                    không những tuyệt vời mà còn an toàn và bảo mật.
                 </p>
              </div>
