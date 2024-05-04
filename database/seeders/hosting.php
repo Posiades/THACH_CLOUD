@@ -29,7 +29,7 @@ class hosting extends Seeder
             'GiaTien'=>'55000',
             'data_Hosting'=>6,
             'bandwidth'=>1000,
-            'slug'=>'Pro-Gold-Hosting'
+            'slug'=>'Persional-Hosting'
         ]);
         DB::table('hosting')->insert([
             'img'=>'img/hosting_Gold.png',
@@ -49,7 +49,7 @@ class hosting extends Seeder
             'GiaTien'=>'240000',
             'data_Hosting'=>30,
             'bandwidth'=>10000,
-            'slug'=>'Premium-Business-Hosting'
+            'slug'=>'Business-Hosting'
         ]);
         DB::table('hosting')->insert([
             'img'=>'img/hosting_Pro.png',
@@ -69,7 +69,7 @@ class hosting extends Seeder
             'GiaTien'=>'550000',
             'data_Hosting'=>45,
             'bandwidth'=>10000,
-            'slug'=>'Turbo-Business-Hosting'
+            'slug'=>'Extra-Business-Hosting'
         ]);
     }
 }

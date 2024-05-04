@@ -30,7 +30,7 @@ class vps extends Seeder
             'GiaTien'=>990000,
             'Storage'=> 120,
             'bandwidth'=> 150,
-            'slug'=>'vps-1'
+            'slug'=>'VPS-Economy'
         ]);
         DB::table('vps')->insert([
             'img' => 'img/vps_Gold.png',
@@ -49,7 +49,7 @@ class vps extends Seeder
             'GiaTien'=>1250000,
             'Storage'=>180,
             'bandwidth'=>150,
-            'slug'=>'vps-2'
+            'slug'=>'VPS-Premium'
         ]);
         DB::table('vps')->insert([
             'img'=>'img/vps_Pro.png',
@@ -68,7 +68,7 @@ class vps extends Seeder
             'GiaTien'=>1650000,
             'Storage'=>250,
             'bandwidth'=>150,
-            'slug'=>'vps-3'
+            'slug'=>'VPS-Ultimate'
         ]);
     }
 }
