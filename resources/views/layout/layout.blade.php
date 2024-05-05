@@ -4,13 +4,19 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>THACH CLOUD | @yield('title')</title>
+      <title >THACH CLOUD | @yield('title')</title>
+      <meta property="og:title" content="THACH CLOUD | @yield('title')">
+      <meta property="og:image" content="{{asset('images/icons/logo.png')}}">
+      <meta property="og:description" content="Thach Cloud cung cấp dịch vụ Hosting và VPS chất lượng cao.">
+      <meta property="og:site_name" content="Thach Cloud">
+      <meta name="robots" content="index, follow">
+      <meta name="googlebot" content="index, follow">
       <meta name="description" content="Thach Cloud cung cấp dịch vụ Hosting và VPS chất lượng cao.">
       <meta name="keywords" content="Thach Cloud, Hosting, VPS">
       <meta name="author" content="Thach Cloud">
+      <link rel="icon" href="{{ asset('images/icons/logo.png') }}" type="image/gif">
       <link rel="stylesheet" href="{{ asset('css/style.css') }}">
       <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-      <link rel="icon" href="{{ asset('images/icons/logo.png') }}" type="image/gif">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-F1qfDMzWhaAOq92sXdF6Be8LwJwy3kGn9vEyIbEaL4lFX0e2xr0UIgnddveva6cF" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
