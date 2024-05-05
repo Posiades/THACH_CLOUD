@@ -64,7 +64,6 @@ class homeController extends Controller
     }
     
     function detail($type,$slug){
-        if(Auth::check()){
            if($type == "hosting"){
             $product = hosting::where('slug', $slug)->first();
         }else if($type == "vps"){
@@ -72,9 +71,7 @@ class homeController extends Controller
         }else{
             {{echo "<h1> Lỗi Không Nhận Diện Được Loại Dịch Vụ </h1>";}}
          } 
-        }else{
-            return view('layout.login');
-        }
+        
         return view('layout/detail', compact('product'));
     }
 
