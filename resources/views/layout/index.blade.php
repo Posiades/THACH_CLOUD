@@ -2,6 +2,13 @@
 @section('title', 'TRANG CHỦ')
 @section('bodyclass', 'main-layout')
 @section('content')
+<div id="developmentModal" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal()">&times;</span>
+       <h2>Website đang trong quá trình phát triển</h2>
+       <p>Một số tính năng có thể chưa hoàn thiện.</p>
+   </div>
+</div>
          <div class="full_bg">
             <div class="slider_main">
                <div class="container">
@@ -267,4 +274,25 @@
             </div>
          </div>
       </div>
+      <script>
+         // Lấy modal
+         var modal = document.getElementById('developmentModal');
+
+         // Lấy phần tử mở modal
+         var btn = document.getElementById("developmentBtn");
+
+         // Lấy nút đóng modal
+         var span = document.getElementsByClassName("close")[0];
+
+         // Mở modal khi trang web được tải
+         window.onload = function() {
+            modal.style.display = "block";
+         }
+
+         // Khi người dùng nhấn nút đóng, đóng modal
+         function closeModal() {
+            modal.style.display = "none";
+         }
+
+   </script>
 @endsection
