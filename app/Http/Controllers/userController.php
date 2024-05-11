@@ -45,25 +45,35 @@ class userController extends Controller
     }
     
     function post_login(Request $req) {  
-        if(isset($_POST['g-recaptcha-response'])){
-            $secret = '6LeyCaQpAAAAAMbdXes36u_41oe7fOEpU6KvRX_a'; 
-            $verify_response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
-            $response_data = json_decode($verify_response);
-            if($response_data->success){
-                if (Auth::attempt($req->only('email', 'password'))) {
-                    if (Auth::user()->is_admin == 1) {
-                        return redirect()->route('dashboard');
-                    } else {
-                        return redirect()->route('index');
-                    }
-                } else {
-                    Session::flash('login_fail', 'Sai tên email hoặc mật khẩu');
-                    return redirect()->back();
-                }
+        // if(isset($_POST['g-recaptcha-response'])){
+        //     $secret = '6LeyCaQpAAAAAMbdXes36u_41oe7fOEpU6KvRX_a'; 
+        //     $verify_response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
+        //     $response_data = json_decode($verify_response);
+        //     if($response_data->success){
+        //         if (Auth::attempt($req->only('email', 'password'))) {
+        //             if (Auth::user()->is_admin == 1) {
+        //                 return redirect()->route('dashboard');
+        //             } else {
+        //                 return redirect()->route('index');
+        //             }
+        //         } else {
+        //             Session::flash('login_fail', 'Sai tên email hoặc mật khẩu');
+        //             return redirect()->back();
+        //         }
+        //     } else {
+        //         Session::flash('captcha_fail', 'Xác thực reCAPTCHA không thành công');
+        //         return redirect()->back();
+        //     }
+        // }
+        if (Auth::attempt($req->only('email', 'password'))) {
+            if (Auth::user()->is_admin == 1) {
+                return redirect()->route('dashboard');
             } else {
-                Session::flash('captcha_fail', 'Xác thực reCAPTCHA không thành công');
-                return redirect()->back();
+                return redirect()->route('index');
             }
+        } else {
+            Session::flash('login_fail', 'Sai tên email hoặc mật khẩu');
+            return redirect()->back();
         }
     }
    

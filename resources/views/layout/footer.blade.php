@@ -1,3 +1,9 @@
+@php
+    $path_file = public_path('footer/');
+    $file_json = file_get_contents($path_file."footer_1.json");
+    $data = json_decode($file_json, true);
+    echo $data;
+@endphp
 <footer>
    <div class="footer">
       <div class="container">

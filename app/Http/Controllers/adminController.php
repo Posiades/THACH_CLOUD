@@ -335,32 +335,27 @@ class adminController extends Controller
         return view('admin.change_footer');
     }
 
-    // public function post_changefooter(Request $req){
-    //     $col_1 = $req->col1;
-    //     $col_2 = $req->col2;
-    //     $col_3 = $req->col3;
-    //     $default = 0;
-    //     if ($col_1 != null || $col_2 != null || $col_3 != null) {
-    //         $value_change = 1;
-    //     } else {
-    //         if (isset($req->default)) {
-    //             $value_change = $req->default;
-    //         } else {
-    //            $value_change = $default;
-    //         }
-    //     }
-    
-    //     return view(
-
-
-            
-    //     )
-
-    
+    public function post_changefooter(Request $req){
+        $col_1 = $req->col1;
+        $col_2 = $req->col2;
+        $col_3 = $req->col3;
+        $path_file = public_path('footer/');
+        if(!empty($col_1) || !empty($col_2) || !empty($col_3)){
+            $col_1_json = json_encode($col_1);
+            $col_2_json = json_encode($col_2);
+            $col_3_json = json_encode($col_3);
+            file_put_contents($path_file."footer_1.json", $col_1_json);
+            file_put_contents($path_file."footer_2.json", $col_2_json);
+            file_put_contents($path_file."footer_3.json", $col_3_json);
+            Session::flash('save_success', "Thay Đổi Thành Công");
+            return redirect()->back();
+        }else{
+            Session::flash('save_err', "Thay đổi không thành công");
+        }
     }
     
 
-
+}
 
 
 
