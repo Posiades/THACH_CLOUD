@@ -28,9 +28,7 @@
 
 </head>
    <body class="@yield('bodyclass')">
-               <div class="loader_bg">
-                  <div class="loader"><img src="{{ asset('images/loading.gif') }}" alt="Loading"/></div>
-               </div>
+              
       @include('layout/header')
       
             @yield('content')

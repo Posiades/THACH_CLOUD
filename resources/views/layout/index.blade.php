@@ -2,6 +2,12 @@
 @section('title', 'TRANG CHỦ')
 @section('bodyclass', 'main-layout')
 @section('content')
+
+ <div class="loader_bg">
+       <div class="loader"><img src="{{ asset('images/loading.gif') }}" alt="Loading"/></div>
+  </div>
+
+
 <div id="developmentModal" class="modal">
    <div class="modal-content">
        <span class="close" onclick="closeModal()">&times;</span>

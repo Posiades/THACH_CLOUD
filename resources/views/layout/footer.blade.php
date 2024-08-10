@@ -1,14 +1,3 @@
-@php
-   $path_file = public_path('footer/');
-   $file_json = file_get_contents($path_file."footer_1.json");
-   $htmlString = str_replace('\n', '</li><li>', $file_json);
-   $fillter_String = str_replace('\r "', '.', $htmlString);
-   $list = explode("\n", $fillter_String);
-   // foreach ($list as $key => $value) {
-   //    echo $value;
-   // }
-   echo gettype($list);
-@endphp
 
 <footer>
    <div class="footer">
